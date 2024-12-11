@@ -4,11 +4,11 @@ import { TipoAsientoService } from '../../../service/tipoAsiento.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-tipoAsiento.admin.view.routed',
-  templateUrl: './tipoAsiento.admin.view.routed.component.html',
-  styleUrls: ['./tipoAsiento.admin.view.routed.component.css']
+  selector: 'app-tipoasiento.admin.view.routed',
+  templateUrl: './tipoasiento.admin.view.routed.component.html',
+  styleUrls: ['./tipoasiento.admin.view.routed.component.css']
 })
-export class TipoAsientoAdminViewRoutedComponent implements OnInit {
+export class TipoasientoAdminViewRoutedComponent implements OnInit {
   id: number = 0;
   route: string = '';
   oTipoAsiento: ITipoasiento = {} as ITipoasiento;

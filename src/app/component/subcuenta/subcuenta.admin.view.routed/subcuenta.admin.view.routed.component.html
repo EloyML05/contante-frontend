@@ -36,6 +36,26 @@
           </th>
           <td class="text-start ps-5">{{ oSubcuenta.momentstamp | date:'dd/MM/yyyy HH:mm:ss' }}</td>
         </tr>
+        <tr class="text-center">
+          <th scope="row" class="bg-primary text-white text-end pe-5">
+            Balances
+          </th>
+          <td class="text-start ps-5">
+            <a href="admin/apunte/plist/xsubcuenta/{{ oSubcuenta.id }}" class="btn btn-primary">
+              {{ oSubcuenta.apuntes}}
+            </a>
+          </td>
+        </tr>
+        <tr class="text-center">
+          <th scope="row" class="bg-primary text-white text-end pe-5">
+            Asientos
+          </th>
+          <td class="text-start ps-5">
+            <a href="admin/balance/plist/xsubcuenta/{{ oSubcuenta.id }}"
+              class="btn btn-primary">{{oSubcuenta.gruposubcuentas}}
+            </a>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>

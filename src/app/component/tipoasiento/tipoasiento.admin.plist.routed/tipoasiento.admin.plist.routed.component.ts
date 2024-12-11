@@ -10,13 +10,13 @@ import { ITipoasiento } from '../../../model/tipoasiento.interface';
 import { TipoAsientoService } from '../../../service/tipoAsiento.service';
 
 @Component({
-  selector: 'app-tipoAsiento.admin.plist.routed',
-  templateUrl: './tipoAsiento.admin.plist.routed.component.html',
-  styleUrls: ['./tipoAsiento.admin.plist.routed.component.css'],
+  selector: 'app-tipoasiento-admin-plist-routed',
+  templateUrl: './tipoasiento.admin.plist.routed.component.html',
+  styleUrls: ['./tipoasiento.admin.plist.routed.component.css'],
   standalone: true,
   imports: [CommonModule, FormsModule, TrimPipe, RouterModule],
 })
-export class TipoAsientoAdminPlistRoutedComponent implements OnInit {
+export class TipoasientoAdminPlistRoutedComponent implements OnInit {
 
   oPage: IPage<ITipoasiento> | null = null;
   //

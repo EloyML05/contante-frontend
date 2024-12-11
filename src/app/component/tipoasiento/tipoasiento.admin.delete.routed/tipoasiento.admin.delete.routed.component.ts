@@ -7,12 +7,12 @@ import { TipoAsientoService } from '../../../service/tipoAsiento.service';
 declare let bootstrap: any;
 
 @Component({
-  selector: 'app-tipoAsiento.admin.delete.routed',standalone: true,
+  selector: 'app-tipoasiento-admin-delete-routed',standalone: true,
   imports: [RouterModule],
-  templateUrl: './tipoAsiento.admin.delete.routed.component.html',
-  styleUrls: ['./tipoAsiento.admin.delete.routed.component.css']
+  templateUrl: './tipoasiento.admin.delete.routed.component.html',
+  styleUrls: ['./tipoasiento.admin.delete.routed.component.css']
 })
-export class TipoAsientoAdminDeleteRoutedComponent implements OnInit {
+export class TipoasientoAdminDeleteRoutedComponent implements OnInit {
   oTipoAsiento: ITipoasiento | null = null;
   strMessage: string = '';
   myModal: any;

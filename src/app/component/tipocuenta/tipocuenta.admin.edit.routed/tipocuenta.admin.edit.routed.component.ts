@@ -16,8 +16,8 @@ declare let bootstrap: any;
 
 @Component({
   selector: 'app-tipoCuenta-admin-edit-routed',
-  templateUrl: './tipoCuenta.admin.edit.routed.component.html',
-  styleUrls: ['./tipoCuenta.admin.edit.routed.component.css'],
+  templateUrl: './tipocuenta.admin.edit.routed.component.html',
+  styleUrls: ['./tipocuenta.admin.edit.routed.component.css'],
   standalone: true,
   imports: [
     MatFormFieldModule,
@@ -26,7 +26,7 @@ declare let bootstrap: any;
     RouterModule,
   ],
 })
-export class TipoCuentaAdminEditRoutedComponent implements OnInit {
+export class TipocuentaAdminEditRoutedComponent implements OnInit {
   id: number = 0;
   oTipoCuentaForm: FormGroup | undefined = undefined;
   oTipoCuenta: ITipocuenta | null = null;

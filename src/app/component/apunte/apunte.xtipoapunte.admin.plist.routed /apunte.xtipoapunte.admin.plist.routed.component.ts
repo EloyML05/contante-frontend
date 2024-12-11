@@ -11,6 +11,7 @@ import { ApunteService } from '../../../service/apunte.service';
 import { TipoApunteService } from '../../../service/tipoapunte.service';
 import { ITipoapunte } from '../../../model/tipoapunte.interface';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ISumas } from '../../../model/sumas.interface';
 
 @Component({
   selector: 'app-apunte.admin.routed',
@@ -34,6 +35,7 @@ export class ApunteXTipoapunteAdminPlistRoutedComponent implements OnInit {
   //
   oTipoapunte: ITipoapunte = {} as ITipoapunte;
   private debounceSubject = new Subject<string>();
+  oTotal: ISumas = {} as ISumas;
 
   constructor(
     private oApunteService: ApunteService,
@@ -55,6 +57,20 @@ export class ApunteXTipoapunteAdminPlistRoutedComponent implements OnInit {
           console.log(err);
         },
       });
+
+      this.oActivatedRoute.params.subscribe((params) => {
+        this.oApunteService.getTotalApuntesXTipoapunte(params['id']).subscribe({
+          next: (oSuma: ISumas) => {
+            this.oTotal = oSuma;
+            console.log(this.oTotal);            
+          },
+          error: (err: HttpErrorResponse) => {
+            console.log(err);
+          },
+        });
+      })
+
+
     })
   }
 

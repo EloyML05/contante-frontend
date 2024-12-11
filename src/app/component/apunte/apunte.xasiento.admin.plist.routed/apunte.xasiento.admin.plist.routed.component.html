@@ -3,24 +3,23 @@
     <div class="col text-center">
       <h2 class="my-2">
         <i class="bi bi-list"></i>
-        Lista de Apuntes del Asiento con id {{oAsiento.id}} ({{oAsiento.descripcion| trim : 10}})
+        Lista de Apuntes por Asiento 
         <i class="bi bi-newspaper"></i>
+        <div class="alert alert-primary my-3 text-start" role="alert">
+          {{oAsiento.id}} -
+          {{oAsiento.descripcion}} ({{oAsiento.periodo.anyo}})
+          
+        </div>
+
+        
       </h2>
-      <a href="admin/apunte/create"
-        ><button class="btn btn-primary my-2 mx-2">
+      <a href="admin/apunte/create"><button class="btn btn-primary my-2 mx-2">
           <i class="bi bi-plus-square"></i>
           Crear nuevo apunte
-        </button></a
-      >
+        </button></a>
 
       <div class="d-inline-flex mx-2">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Buscar"
-          (keyup)="filter($event)"
-          [(ngModel)]="strFiltro"
-        />
+        <input type="text" class="form-control" placeholder="Buscar" (keyup)="filter($event)" [(ngModel)]="strFiltro" />
       </div>
 
       <div class="d-inline-flex mx-2">
@@ -42,12 +41,7 @@
       <nav class="my-2">
         <ul class="pagination justify-content-center">
           <li class="page-item">
-            <a
-              class="page-link"
-              [class.disabled]="nPage - -1 === 1"
-              (click)="goToPrev()"
-              href="#"
-            >
+            <a class="page-link" [class.disabled]="nPage - -1 === 1" (click)="goToPrev()" href="#">
               Anterior
               <i class="bi bi-caret-left-square-fill"></i>
             </a>
@@ -57,27 +51,16 @@
             @if(pag==='...'){
             <a class="page-link">{{ pag }}</a>
             } @else {
-            <a
-              class="page-link"
-              href="#"
-              (click)="goToPage(-(-pag))"
-              [class.active]="nPage - -1 === -(-pag)"
-            >
+            <a class="page-link" href="#" (click)="goToPage(-(-pag))" [class.active]="nPage - -1 === -(-pag)">
               {{ pag }}
             </a>
             }
           </li>
 
           <li class="page-item">
-            <a
-              class="page-link"
-              [class.disabled]="nPage - -1 === oPage?.totalPages"
-              (click)="goToNext()"
-              href="#"
-            >
+            <a class="page-link" [class.disabled]="nPage - -1 === oPage?.totalPages" (click)="goToNext()" href="#">
               <i class="bi bi-caret-right-square-fill"></i>
-              Siguiente</a
-            >
+              Siguiente</a>
           </li>
         </ul>
       </nav>
@@ -96,11 +79,9 @@
         </h5>
       </div>
 
-      < class="d-flex flex-column">
-        <table
-          class="table table-striped table-bordered my-2"
-          style="table-layout: fixed; width: 100%; word-break: break-all"
-        >
+      <div class="d-flex flex-column">
+        <table class="table table-striped table-bordered my-2"
+          style="table-layout: fixed; width: 100%; word-break: break-all">
           <thead>
             <tr>
               <th (click)="sort('id')" class="bg-danger text-white">
@@ -148,7 +129,7 @@
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
-              
+
               <th class="bg-primary text-white">Subcuenta</th>
               <th class="bg-primary text-white">Tipo de Apunte</th>
 
@@ -176,25 +157,13 @@
               </td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
-                  <button
-                    type="button"
-                    class="btn btn-success"
-                    (click)="view(apunte)"
-                  >
+                  <button type="button" class="btn btn-success" (click)="view(apunte)">
                     <i class="bi bi-eye icon-15"></i>
                   </button>
-                  <button
-                    type="button"
-                    class="btn btn-warning icon-15"
-                    (click)="edit(apunte)"
-                  >
+                  <button type="button" class="btn btn-warning icon-15" (click)="edit(apunte)">
                     <i class="bi bi-pen"></i>
                   </button>
-                  <button
-                    type="button"
-                    class="btn btn-danger icon-15"
-                    (click)="remove(apunte)"
-                  >
+                  <button type="button" class="btn btn-danger icon-15" (click)="remove(apunte)">
                     <i class="bi bi-trash"></i>
                   </button>
                 </div>
@@ -208,22 +177,26 @@
           </tbody>
         </table>
       </div>
-        <div class="d-flex justify-content-end">
-        <table class="table-sm table-striped table-bordered my-2">
+      <div class="d-flex justify-content-end">
+        <table class="table-totales table-sm table-striped table-bordered my-2">
           <tr>
-            <th>Total Dever</th>
+            <th>Total Debe</th>
             <th>Total Haber</th>
           </tr>
           <tr>
-            <td>
+            <td class="bg-danger text-white">
               {{oTotal.totalDebe| number : '1.2-2'}}
             </td>
-            <td>
+            <td class="bg-success text-white">
               {{oTotal.totalHaber| number : '1.2-2'}}
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="bg-primary text-white">
+              Diferencia: {{nDiferencia| number : '1.2-2'}}
             </td>
           </tr>
         </table>
       </div>
-      </div>
     </div>
-
+  </div>

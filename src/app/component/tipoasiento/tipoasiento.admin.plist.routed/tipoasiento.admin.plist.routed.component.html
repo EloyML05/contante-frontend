@@ -105,7 +105,11 @@
             <tr>
               <td class="text-center">{{ tipoAsiento.id }}</td>
               <td class="text-start">{{ tipoAsiento.descripcion | trim : 50 }}</td>
-              <td> {{tipoAsiento.grupotipoasientos}}</td>
+              <td class="text-center">
+                <a href="admin/balance/plist/xtipoasiento/{{ tipoAsiento.id }}" class="btn btn-primary">
+                  {{ tipoAsiento.grupotipoasientos }}
+                </a>
+              </td>
               <td>
                 <a href="admin/asiento/plist/xtipoasiento/{{tipoAsiento.id}}"
                   class="btn btn-primary">{{tipoAsiento.asientos}}</a>

@@ -6,13 +6,13 @@ import { TipoCuentaService } from '../../../service/tipoCuenta.service';
 declare let bootstrap: any;
 
 @Component({
-  selector: 'app-tipoCuenta-admin-delete-routed',
+  selector: 'app-tipocuenta-admin-delete-routed',
   standalone: true,
   imports: [RouterModule],
-  templateUrl: './tipoCuenta.admin.delete.component.html',
-  styleUrl: './tipoCuenta.admin.delete.component.css',
+  templateUrl: './tipocuenta.admin.delete.component.html',
+  styleUrl: './tipocuenta.admin.delete.component.css',
 })
-export class TipoCuentaAdminDeleteRoutedComponent implements OnInit {
+export class TipocuentaAdminDeleteRoutedComponent implements OnInit {
   oTipoCuenta: ITipocuenta
   strMessage: string = '';
   myModal: any;

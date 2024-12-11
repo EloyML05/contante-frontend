@@ -164,7 +164,11 @@
                   >{{ subcuenta.apuntes }}</a
                 >
               </td>
-              <td class="text-center">{{ subcuenta.gruposubcuentas }}</td>
+              <td class="text-center"> <a
+                href="admin/balance/plist/xsubcuenta/{{ subcuenta.id }}"
+                class="btn btn-primary"
+                >{{subcuenta.gruposubcuentas }}</a>
+              </td>
 
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">

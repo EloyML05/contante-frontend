@@ -11,6 +11,7 @@ import { ApunteService } from '../../../service/apunte.service';
 import { ISubcuenta } from '../../../model/subcuenta.interface';
 import { SubcuentaService } from '../../../service/subcuenta.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ISumas } from '../../../model/sumas.interface';
 
 @Component({
   selector: 'app-apunte.xsubcuenta.admin.plist.routed',
@@ -36,6 +37,7 @@ export class ApunteXSubcuentaAdminPlistRoutedComponent implements OnInit {
   private debounceSubject = new Subject<string>();
 
   oSubcuenta: ISubcuenta = {} as ISubcuenta;
+  oTotal: ISumas = {} as ISumas;
 
   constructor(
     private oApunteService: ApunteService,
@@ -49,7 +51,7 @@ export class ApunteXSubcuentaAdminPlistRoutedComponent implements OnInit {
     });
     // get id from route admin/asiento/plist/xsubcuenta/:id
     this.oActivatedRoute.params.subscribe((params) => {
-      this.oSubcuentaService.get(params['id']).subscribe({  
+      this.oSubcuentaService.get(params['id']).subscribe({
         next: (oSubcuenta: ISubcuenta) => {
           this.oSubcuenta = oSubcuenta;
           this.getPage();
@@ -58,6 +60,20 @@ export class ApunteXSubcuentaAdminPlistRoutedComponent implements OnInit {
           console.log(err);
         },
       });
+
+      this.oActivatedRoute.params.subscribe((params) => {
+        this.oApunteService.getTotalApuntesXSubcuenta(params['id']).subscribe({
+          next: (oSuma: ISumas) => {
+            this.oTotal = oSuma;
+            console.log(this.oTotal);            
+          },
+          error: (err: HttpErrorResponse) => {
+            console.log(err);
+          },
+        });
+      })
+
+
     });
   }
 

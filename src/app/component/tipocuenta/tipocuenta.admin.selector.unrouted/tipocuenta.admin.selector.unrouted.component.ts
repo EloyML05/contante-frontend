@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IPage } from '../../../model/model.interface';
 import { FormsModule } from '@angular/forms';
@@ -8,16 +8,17 @@ import { Router, RouterModule } from '@angular/router';
 import { TrimPipe } from '../../../pipe/trim.pipe';
 import { ITipocuenta } from '../../../model/tipocuenta.interface';
 import { TipoCuentaService } from '../../../service/tipoCuenta.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-tipoCuenta.admin.routed',
-  templateUrl: './tipoCuenta.admin.plist.routed.component.html',
-  styleUrls: ['./tipoCuenta.admin.plist.routed.component.css'],
+  selector: 'app-tipocuenta-admin-selector-unrouted',
+  templateUrl: './tipocuenta.admin.selector.unrouted.component.html',
+  styleUrls: ['./tipocuenta.admin.selector.unrouted.component.css'],
   standalone: true,
   imports: [CommonModule, FormsModule, TrimPipe, RouterModule],
 })
 
-export class TipoCuentaAdminPlistRoutedComponent implements OnInit {
+export class TipocuentaAdminSelectorUnroutedComponent implements OnInit {
   oPage: IPage<ITipocuenta> | null = null;
   //
   nPage: number = 0; // 0-based server count
@@ -31,6 +32,9 @@ export class TipoCuentaAdminPlistRoutedComponent implements OnInit {
   arrBotonera: string[] = [];
   //
   private debounceSubject = new Subject<string>();
+  //
+  readonly dialogRef = inject(MatDialogRef<TipocuentaAdminSelectorUnroutedComponent>);
+  readonly data = inject(MAT_DIALOG_DATA);
 
   constructor(
     private oTipoCuentaService: TipoCuentaService,
@@ -69,19 +73,19 @@ export class TipoCuentaAdminPlistRoutedComponent implements OnInit {
       });
   }
 
-  edit(oTipoCuenta: ITipocuenta) {
-    //navegar a la página de edición
-    this.oRouter.navigate(['admin/tipoCuenta/edit', oTipoCuenta.id]);
+ 
+
+  select(oTipoCuenta: ITipocuenta) {
+    
+      // estamos en ventana emergente: no navegar
+      // emitir el objeto seleccionado
+
+      this.dialogRef.close(oTipoCuenta);
+
+
   }
 
-  view(oTipoCuenta: ITipocuenta) {
-    //navegar a la página de edición
-    this.oRouter.navigate(['admin/tipoCuenta/view', oTipoCuenta.id]);
-  }
 
-  remove(oTipoCuenta: ITipocuenta) {
-    this.oRouter.navigate(['admin/tipoCuenta/delete/', oTipoCuenta.id]);
-  }
 
   goToPage(p: number) {
     if (p) {
@@ -117,6 +121,6 @@ export class TipoCuentaAdminPlistRoutedComponent implements OnInit {
   }
 
   filter(event: KeyboardEvent) {
-    this.debounceSubject.next(this.strFiltro);
+    this.debounceSubject.next(this.strFiltro);    
   }
 }

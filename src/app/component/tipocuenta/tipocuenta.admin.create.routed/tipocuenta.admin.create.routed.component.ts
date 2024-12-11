@@ -16,8 +16,8 @@ declare let bootstrap: any;
 
 @Component({
   standalone: true,
-  selector: 'app-tipoCuenta.admin.create.routed',
-  templateUrl: './tipoCuenta.admin.create.routed.component.html',
+  selector: 'app-tipocuenta-admin-create-routed',
+  templateUrl: './tipocuenta.admin.create.routed.component.html',
   imports: [
     MatFormFieldModule,
     MatInputModule,
@@ -25,9 +25,10 @@ declare let bootstrap: any;
     ReactiveFormsModule,
     RouterModule,
   ],
-  styleUrls: ['./tipoCuenta.admin.create.routed.component.css'],
+  styleUrls: ['./tipocuenta.admin.create.routed.component.css'],
 })
-export class TipoCuentaAdminCreateRoutedComponent implements OnInit {
+
+export class TipocuentaAdminCreateRoutedComponent implements OnInit {
   id: number = 0;
   oTipoCuentaForm: FormGroup | undefined = undefined;
   oTipoCuenta: ITipocuenta | null = null;

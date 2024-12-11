@@ -175,5 +175,21 @@
         </table>
       </div>
     </div>
+    <div class="d-flex justify-content-end">
+      <table class="table-totales table-sm table-striped table-bordered my-2">
+        <tr>
+          <th>Total Debe</th>
+          <th>Total Haber</th>
+        </tr>
+        <tr>
+          <td class="bg-danger text-white">
+            {{oTotal.totalDebe| number : '1.2-2'}}
+          </td>
+          <td class="bg-success text-white">
+            {{oTotal.totalHaber| number : '1.2-2'}}
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
 </div>

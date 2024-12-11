@@ -76,6 +76,102 @@ export class BalanceService {
     return this.oHttp.get<IPage<IBalance>>(URL, httpOptions);
   }
 
+  getPageXTipoasiento(
+    page: number,
+    size: number,
+    field: string,
+    dir: string,
+    filtro: string,
+    id_tipoasiento: number
+  ): Observable<IPage<IBalance>> {
+    let URL: string = '';
+    URL += this.serverURL + '/xtipoasiento/' + id_tipoasiento;
+    if (!page) {
+      page = 0;
+    }
+    URL += '?page=' + page;
+    if (!size) {
+      size = 10;
+    }
+    URL += '&size=' + size;
+    if (field) {
+      URL += '&sort=' + field;
+      if (dir === 'asc') {
+        URL += ',asc';
+      } else {
+        URL += ',desc';
+      }
+    }
+    if (filtro) {
+      URL += '&filter=' + filtro;
+    }
+    return this.oHttp.get<IPage<IBalance>>(URL, httpOptions);
+  }
+
+  getPageXSubcuenta(
+    page: number,
+    size: number,
+    field: string,
+    dir: string,
+    filtro: string,
+    id_subcuenta: number
+  ): Observable<IPage<IBalance>> {
+    let URL: string = '';
+    URL += this.serverURL + '/xsubcuenta/' + id_subcuenta;
+    if (!page) {
+      page = 0;
+    }
+    URL += '?page=' + page;
+    if (!size) {
+      size = 10;
+    }
+    URL += '&size=' + size;
+    if (field) {
+      URL += '&sort=' + field;
+      if (dir === 'asc') {
+        URL += ',asc';
+      } else {
+        URL += ',desc';
+      }
+    }
+    if (filtro) {
+      URL += '&filter=' + filtro;
+    }
+    return this.oHttp.get<IPage<IBalance>>(URL, httpOptions);
+  }
+    
+  getPageXTipocuenta(
+    page: number,
+    size: number,
+    field: string,
+    dir: string,
+    filtro: string,
+    id_tipocuenta: number
+  ): Observable<IPage<IBalance>> {
+    let URL: string = '';
+    URL += this.serverURL + '/xtipocuenta/' + id_tipocuenta;
+    if (!page) {
+      page = 0;
+    }
+    URL += '?page=' + page;
+    if (!size) {
+      size = 10;
+    }
+    URL += '&size=' + size;
+    if (field) {
+      URL += '&sort=' + field;
+      if (dir === 'asc') {
+        URL += ',asc';
+      } else {
+        URL += ',desc';
+      }
+    }
+    if (filtro) {
+      URL += '&filter=' + filtro;
+    }
+    return this.oHttp.get<IPage<IBalance>>(URL, httpOptions);
+  }
+
   get(id: number): Observable<IBalance> {
     let URL: string = '';
     URL += this.serverURL;

@@ -12,7 +12,7 @@ import { ISumas } from '../model/sumas.interface';
 export class ApunteService {
   serverURL: string = serverURL + '/apunte';
 
-  constructor(private oHttp: HttpClient) {}
+  constructor(private oHttp: HttpClient) { }
 
   getPage(
     page: number,
@@ -77,7 +77,7 @@ export class ApunteService {
     return this.oHttp.get<IPage<IApunte>>(URL, httpOptions);
   }
 
-  getPageXAsiento(  
+  getPageXAsiento(
     page: number,
     size: number,
     field: string,
@@ -85,7 +85,7 @@ export class ApunteService {
     filtro: string,
     id_asiento: number
   ): Observable<IPage<IApunte>> {
-  
+
     let URL: string = '';
     URL += this.serverURL + '/xasiento/' + id_asiento;
     if (!page) {
@@ -142,9 +142,21 @@ export class ApunteService {
     return this.oHttp.get<IPage<IApunte>>(URL, httpOptions);
   }
 
-  getTotalAsiento(id : number):Observable<ISumas>{
+  getTotalApuntesXAsiento(id_asiento: number): Observable<ISumas> {
     let URL: string = '';
-    URL += this.serverURL + '/asiento/total/' + id;
+    URL += this.serverURL + '/xasiento/total/' + id_asiento;
+    return this.oHttp.get<ISumas>(URL);
+  }
+
+  getTotalApuntesXSubcuenta(id_subcuenta: number): Observable<ISumas> {
+    let URL: string = '';
+    URL += this.serverURL + '/xsubcuenta/total/' + id_subcuenta;
+    return this.oHttp.get<ISumas>(URL);
+  }
+
+  getTotalApuntesXTipoapunte(id_tipoapunte: number): Observable<ISumas> {
+    let URL: string = '';
+    URL += this.serverURL + '/xtipoapunte/total/' + id_tipoapunte;
     return this.oHttp.get<ISumas>(URL);
   }
 

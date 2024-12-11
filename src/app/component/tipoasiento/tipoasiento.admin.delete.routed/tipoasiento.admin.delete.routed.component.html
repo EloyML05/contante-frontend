@@ -22,13 +22,21 @@
           <th scope="row" class="bg-primary text-white text-end pe-5">
             Balances
           </th>
-          <td class="text-start ps-5">{{ oTipoAsiento!.grupotipoasientos }}</td>
+          <td class="text-start ps-5">
+            <a href="admin/balance/plist/xtipoasiento/{{ oTipoAsiento!.id }}" class="btn btn-primary">
+              {{ oTipoAsiento!.grupotipoasientos }}
+            </a>
+          </td>
         </tr>
         <tr class="text-center">
           <th scope="row" class="bg-primary text-white text-end pe-5">
             Asientos
           </th>
-          <td class="text-start ps-5">{{ oTipoAsiento!.asientos}}</td>
+          <td class="text-start ps-5">
+            <a href="admin/asiento/plist/xtipoasiento/{{oTipoAsiento!.id}}"
+              class="btn btn-primary">{{oTipoAsiento!.asientos}}
+            </a>
+          </td>
         </tr>
       </tbody>
     </table>

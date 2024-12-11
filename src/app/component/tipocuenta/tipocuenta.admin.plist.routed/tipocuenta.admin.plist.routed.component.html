@@ -3,12 +3,12 @@
     <div class="col text-center">
       <h2 class="my-2">
         <i class="bi bi-list"></i>
-        Lista de Periodos
-        <i class="bi bi-calendar2-date"></i>
+        Lista de tipoCuentas
+        <i class="bi bi-credit-card-fill"></i>
       </h2>
-      <a href="admin/periodo/create"><button class="btn btn-primary my-2 mx-2">
+      <a href="admin/tipoCuenta/create"><button class="btn btn-primary my-2 mx-2">
           <i class="bi bi-plus-square"></i>
-          Crear nuevo periodo
+          Crear nuevo tipoCuenta
         </button></a>
 
       <div class="d-inline-flex mx-2">
@@ -83,15 +83,16 @@
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
-              <th (click)="sort('anyo')" class="bg-primary text-white">
-                Año @if (strField === 'anyo') { @if (strDir === 'desc') {
+              <th (click)="sort('descripcion')" class="bg-primary text-white">
+                Descripcion @if (strField === 'descripcion') { @if (strDir ===
+                'desc') {
                 <i class="bi bi-caret-down-fill"></i>
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
-              <th (click)="sort('descripcion')" class="bg-primary text-white">
-                Descripción @if (strField === 'descripcion') { @if (strDir ===
-                'desc') {
+              <th (click)="sort('creditoodebito')" class="bg-primary text-white">
+                Crédito o débito @if (strField === 'creditoodebito') { @if
+                (strDir === 'desc') {
                 <i class="bi bi-caret-down-fill"></i>
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
@@ -103,47 +104,63 @@
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
-              <th (click)="sort('cerrado')" class="bg-primary text-white">
-                Cerrado @if (strField === 'cerrado') { @if (strDir === 'desc') {
+              <th (click)="sort('realonominal')" class="bg-primary text-white">
+                Real o nominal @if (strField === 'realonominal') { @if (strDir
+                === 'desc') {
                 <i class="bi bi-caret-down-fill"></i>
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
-              <th class="bg-primary text-white">Asientos</th>
+              <th class="bg-primary text-white">Cuentas</th>
+              <th class="bg-primary text-white">Balances</th>
               <th class="bg-warning text-black">Acciones</th>
             </tr>
           </thead>
 
           <tbody>
-            @for (periodo of oPage?.content; track periodo.id) {
+            @for (tipoCuenta of oPage?.content; track tipoCuenta.id) {
             <tr>
-              <td class="text-center">{{ periodo.id }}</td>
-              <td class="text-center">{{ periodo.anyo }}</td>
-              <td class="text-start">{{ periodo.descripcion }}</td>
-              <td class="text-start">{{ periodo.comentarios }}</td>
-              <td class="text-center">
-                @if (periodo.cerrado == true) {
-                <i class="bi bi-check" style="font-size: 2rem; color: green;"></i>
-                } @else{
-                <i class="bi bi-x" style="font-size: 2rem; color: red;"></i>
-                }
-
+              <td class="text-center">{{ tipoCuenta.id }}</td>
+              <td class="text-start">
+                {{ tipoCuenta.descripcion | trim : 25 }}
               </td>
               <td class="text-center">
-                <a href="admin/asiento/plist/xperiodo/{{ periodo.id }}" class="btn btn-primary">
-                  {{ periodo.asientos }}
+                @if(tipoCuenta.creditoodebito === 0){
+                <span class="badge text-bg-danger">CREDITO</span>
+                } @else {
+                <span class="badge text-bg-success">DEBITO</span>
+                }
+              </td>
+              <td class="text-start">
+                {{ tipoCuenta.comentarios | trim : 10 }}
+              </td>
+              <td class="text-center">
+                @if(tipoCuenta.realonominal === 0){
+                <span class="badge text-bg-warning">REAL</span>
+                } @else {
+                <span class="badge text-bg-info">NOMINAL</span>
+                }
+              </td>
+              <td class="text-center">
+                <a href="admin/cuenta/plist/xtipocuenta/{{ tipoCuenta.id }}" class="btn btn-primary">{{
+                  tipoCuenta.cuentas }}</a>
+              </td>
+
+              <td class="text-center">
+                <a href="admin/balance/plist/xtipocuenta/{{ tipoCuenta.id }}" class="btn btn-primary">
+                  {{ tipoCuenta.grupotipocuentas }}
                 </a>
               </td>
 
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-success" (click)="view(periodo)">
+                  <button type="button" class="btn btn-success" (click)="view(tipoCuenta)">
                     <i class="bi bi-eye icon-15"></i>
                   </button>
-                  <button type="button" class="btn btn-warning icon-15" (click)="edit(periodo)">
+                  <button type="button" class="btn btn-warning icon-15" (click)="edit(tipoCuenta)">
                     <i class="bi bi-pen"></i>
                   </button>
-                  <button type="button" class="btn btn-danger icon-15" (click)="remove(periodo)">
+                  <button type="button" class="btn btn-danger icon-15" (click)="remove(tipoCuenta)">
                     <i class="bi bi-trash"></i>
                   </button>
                 </div>
@@ -151,7 +168,7 @@
             </tr>
             } @empty {
             <tr>
-              <td colspan="6">No hay periodos</td>
+              <td colspan="11">No hay tipoCuentas</td>
             </tr>
             }
           </tbody>

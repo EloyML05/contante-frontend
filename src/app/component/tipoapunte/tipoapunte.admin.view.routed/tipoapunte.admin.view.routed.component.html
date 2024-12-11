@@ -31,16 +31,22 @@
           <th scope="row" class="bg-primary text-white text-end pe-5">
             Apuntes
           </th>
-          <td class="text-start ps-5"> <a href="admin/apunte/plist/xtipoapunte/{{ oTipoApunte.id }}"
-              class="btn btn-primary">{{
-              oTipoApunte.apuntes }}</a></td>
+          <td class="text-start ps-5">
+            <a href="admin/apunte/plist/xtipoapunte/{{ oTipoApunte.id }}" class="btn btn-primary">
+              {{ oTipoApunte.apuntes }}
+            </a>
+          </td>
         </tr>
 
         <tr class="text-center">
           <th scope="row" class="bg-primary text-white text-end pe-5">
             Balances
           </th>
-          <td class="text-start ps-5">{{ oTipoApunte.grupotipoapuntes }}</td>
+          <td class="text-start ps-5">
+            <a href="admin/balance/plist/xtipoapunte/{{ oTipoApunte.id }}" class="btn btn-primary">
+              {{ oTipoApunte.grupotipoapuntes }}
+            </a>
+          </td>
         </tr>
 
       </tbody>

@@ -10,9 +10,9 @@ import { TipoAsientoService } from '../../../service/tipoAsiento.service';
 declare let bootstrap: any;
 
 @Component({
-  selector: 'app-tipoAsiento.admin.edit.routed',
-  templateUrl: './tipoAsiento.admin.edit.routed.component.html',
-  styleUrls: ['./tipoAsiento.admin.edit.routed.component.css'],
+  selector: 'app-tipoasiento-admin-edit-routed',
+  templateUrl: './tipoasiento.admin.edit.routed.component.html',
+  styleUrls: ['./tipoasiento.admin.edit.routed.component.css'],
   standalone: true,
   imports: [
     MatFormFieldModule,
@@ -21,7 +21,7 @@ declare let bootstrap: any;
     RouterModule,
   ],
 })
-export class TipoAsientoAdminEditRoutedComponent implements OnInit {
+export class TipoasientoAdminEditRoutedComponent implements OnInit {
   id: number = 0;
   oTipoAsientoForm: FormGroup | undefined = undefined;
   oTipoAsiento: ITipoasiento | null = null;
