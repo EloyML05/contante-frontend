@@ -72,6 +72,7 @@ import { PeriodoAdminDeleteRoutedComponent } from './component/periodo/periodo.a
 import { PeriodoAdminEditRoutedComponent } from './component/periodo/periodo.admin.edit.routed/periodo.admin.edit.routed.component';
 import { PeriodoAdminPlistRoutedComponent } from './component/periodo/periodo.admin.plist.routed/periodo.admin.plist.routed.component';
 import { PeriodoAdminViewRoutedComponent } from './component/periodo/periodo.admin.view.routed/periodo.admin.view.routed.component';
+import { TipoapunteXBalanceAdminPlistRoutedComponent } from './component/tipoapunte/tipoapunte.xbalance.admin.plist.routed/tipoapunte.xbalance.admin.plist.routed.component';
 
 export const routes: Routes = [
   { path: '', component: SharedHomeRoutedComponent },
@@ -140,6 +141,9 @@ export const routes: Routes = [
   { path: 'admin/tipoapunte/view/:id', component: TipoApunteAdminViewRoutedComponent },
   { path: 'admin/tipoapunte/create', component: TipoApunteAdminCreateRoutedComponent, pathMatch: 'full' },
   { path: 'admin/tipoapunte/delete/:id', component: TipoApunteAdminDeleteRoutedComponent },
+  { path: 'admin/tipoapunte/xbalance/:id', component: TipoapunteXBalanceAdminPlistRoutedComponent },
+
+
 
   { path: 'admin/periodo/create', component: PeriodoAdminCreateRoutedComponent, pathMatch: 'full' },
   { path: 'admin/periodo/delete/:id', component: PeriodoAdminDeleteRoutedComponent },
